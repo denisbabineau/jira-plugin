@@ -11,6 +11,7 @@ import org.apache.commons.lang3.StringUtils;
 import java.util.Optional;
 import java.util.Set;
 import java.util.logging.Logger;
+import javax.annotation.Nullable;
 
 /**
  * Performs an action which removes a jira version, optionally moving issues to another version (version merging)
