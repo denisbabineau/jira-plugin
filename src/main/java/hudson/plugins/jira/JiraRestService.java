@@ -239,6 +239,26 @@ public class JiraRestService {
         }
     }
 
+    public void removeVersion(String projectKey, Version version, @Nullable Version moveFixIssuesToVersion, @Nullable Version moveAffectedIssuesToVersion) {
+        final URIBuilder builder = new URIBuilder(uri);
+
+        try {
+            final URI versionUri = builder.setPath(String.format("%s/version/%s", baseApiPath, version.getId())).build();
+
+            final URI moveFixIssuesToVersionUri = moveFixIssuesToVersion == null
+                    ? null
+                    : builder.setPath(String.format("%s/version/%s", baseApiPath, moveFixIssuesToVersion.getId())).build();
+
+            final URI moveAffectedIssuesToVersionUri = moveAffectedIssuesToVersion == null
+                    ? null
+                    : builder.setPath(String.format("%s/version/%s", baseApiPath, moveAffectedIssuesToVersion.getId())).build();
+
+            jiraRestClient.getVersionRestClient().removeVersion(versionUri, moveFixIssuesToVersionUri, moveAffectedIssuesToVersionUri).get(timeout, TimeUnit.SECONDS);
+        }catch (Exception e) {
+            LOGGER.log(WARNING, "jira rest client remove version error. cause: " + e.getMessage(), e);
+        }
+    }
+
     @Deprecated
     public BasicIssue createIssue(String projectKey, String description, String assignee, Iterable<String> components, String summary) {
         return createIssue(projectKey, description, assignee, components, summary, BUG_ISSUE_TYPE_ID, null);

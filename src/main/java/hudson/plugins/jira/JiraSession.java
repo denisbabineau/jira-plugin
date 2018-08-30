@@ -458,4 +458,15 @@ public class JiraSession {
      */
     public Permissions getMyPermissions(){ return service.getMyPermissions(); }
 
+    /**
+     * Remove given version in given project, optionally moving issues to given version(s)
+     * @param projectKey
+     * @param version
+     * @param moveFixIssuesToVersion
+     * @param moveAffectedIssuesToVersion
+     */
+    public void removeVersion(String projectKey, Version version, @Nullable Version moveFixIssuesToVersion, @Nullable Version moveAffectedIssuesToVersion) {
+        service.removeVersion(projectKey, version, moveFixIssuesToVersion, moveAffectedIssuesToVersion);
+    }
+
 }
