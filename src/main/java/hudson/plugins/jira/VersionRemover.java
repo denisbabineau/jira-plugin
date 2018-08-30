@@ -62,7 +62,7 @@ public class VersionRemover {
                     .filter(version -> version.getName().equals(finalMoveAffectedIssuesToVersion)).findFirst();
 
             if (matchingVersion.isPresent()) {
-                listener.getLogger().println(Messages.VersionReleaser_RemovingVersion(realVersion, realProjectKey));
+                listener.getLogger().println(Messages.VersionRemover_RemovingVersion(realVersion, realProjectKey));
                 removeVersion(realProjectKey, matchingVersion.get(), matchingMoveFixIssuesToVersion.orElse(null), matchingMoveAffectedIssuesToVersion.orElse(null), site.getSession());
             } else {
                 listener.getLogger().println(Messages.VersionRemover_VersionNotFound(realVersion, realProjectKey));
