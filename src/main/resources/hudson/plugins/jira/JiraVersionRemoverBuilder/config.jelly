@@ -3,13 +3,13 @@
   <f:entry title="${%JIRA Project Key}" field="jiraProjectKey">
         <f:textbox/>
   </f:entry>
-  <f:entry title="${%Remove Version}" field="removeVersion">
+  <f:entry title="${%Remove Version}" field="jiraVersion">
         <f:textbox/>
   </f:entry>
-  <f:entry title="${%Move Fix Issues To Version}" field="moveFixVersion">
+  <f:entry title="${%Move Fix Issues To Version}" field="jiraMoveFixIssuesToVersion">
         <f:textbox/>
   </f:entry>
-  <f:entry title="${%Move Affected Issues To Version}" field="moveAffectedVersion">
+  <f:entry title="${%Move Affected Issues To Version}" field="jiraMoveAffectedIssuesToVersion">
         <f:textbox/>
   </f:entry>
 </j:jelly>
