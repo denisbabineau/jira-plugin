@@ -32,6 +32,18 @@ public class JiraVersionRemoverBuilder extends Builder implements SimpleBuildSte
         this.jiraMoveAffectedIssuesToVersion = jiraMoveAffectedIssuesToVersion;
     }
 
+    public String getJiraProjectKey() { return jiraProjectKey; }
+    public void setJiraProjectKey(String jiraProjectKey) { this.jiraProjectKey = jiraProjectKey; }
+
+    public String getJiraVersion() { return jiraVersion; }
+    public void setJiraVersion(String jiraVersion) { this.jiraVersion = jiraVersion; }
+
+    public String getJiraMoveFixIssuesToVersion() { return jiraMoveFixIssuesToVersion; }
+    public void setJiraMoveFixIssuesToVersion(String jiraMoveFixIssuesToVersion) { this.jiraMoveFixIssuesToVersion = jiraMoveFixIssuesToVersion; }
+
+    public String getJiraMoveAffectedIssuesToVersion() { return jiraMoveAffectedIssuesToVersion; }
+    public void setJiraMoveAffectedIssuesToVersion(String jiraMoveAffectedIssuesToVersion) { this.jiraMoveAffectedIssuesToVersion = jiraMoveAffectedIssuesToVersion; }
+    
     @Override
     public void perform(Run<?, ?> run, FilePath workspace, Launcher launcher, TaskListener listener) {
         new VersionRemover().perform(run.getParent(), jiraProjectKey, jiraVersion, jiraMoveFixIssuesToVersion, jiraMoveAffectedIssuesToVersion, run, listener);
